@@ -7,9 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a375e7f7-9132-486d-a078-bad406c9719a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InvokeDotNETInstanceMethodFromJavaScript/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InvokeDotNETInstanceMethodFromJavaScript/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Index.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/NavMenu.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644268237290</updated>
-      <workItem from="1644268268704" duration="1898000" />
+      <workItem from="1644268268704" duration="2817000" />
     </task>
     <servers />
   </component>

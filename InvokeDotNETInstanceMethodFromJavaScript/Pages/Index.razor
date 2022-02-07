@@ -1,4 +1,5 @@
 @page "/"
+@implements IDisposable;
 
 <PageTitle>Index</PageTitle>
 
@@ -37,4 +38,10 @@
         _currentNumber++;
         StateHasChanged();
     }
+
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
+
 }
