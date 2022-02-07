@@ -2,8 +2,39 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Invoke .NET Instance Method from JavaScript</h1>
 
-Welcome to your new app.
+<p>Hello! This is a project by <a href="https://mattjameschampion.com/">Matt Champion</a> to demonstrate how to call .NET instance methods directly from JavaScript.</p>
 
-<SurveyPrompt Title="How is Blazor working for you?"/>
+<h1>Demo</h1>
+
+<p>The following button directly calls a JavaScript function that invokes a method in the Blazor page code-behind!</p>
+<p>The Blazor code increments a number, which is currently set to @_currentNumber</p>
+
+<button onclick="CallBlazorMethod()">Call JavaScript Function</button>
+
+@code{
+    [Inject] IJSRuntime? JsRuntime { get; set; }
+    
+    private DotNetObjectReference<Index>? _objRef;
+    private int _currentNumber;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await SetDotNetHelper();
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async Task SetDotNetHelper()
+    {
+        _objRef = DotNetObjectReference.Create(this);
+        if (JsRuntime != null) await JsRuntime.InvokeAsync<string>("SetDotNetHelper", _objRef);
+    }
+    
+    [JSInvokable]
+    public void BlazorMethod()
+    {
+        _currentNumber++;
+        StateHasChanged();
+    }
+}
