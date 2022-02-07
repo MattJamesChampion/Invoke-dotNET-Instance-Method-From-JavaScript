@@ -1,5 +1,4 @@
 @page "/"
-@implements IDisposable;
 
 <PageTitle>Index</PageTitle>
 
@@ -13,35 +12,3 @@
 <p>The Blazor code increments a number, which is currently set to @_currentNumber</p>
 
 <button onclick="CallBlazorMethod()">Call JavaScript Function</button>
-
-@code{
-    [Inject] IJSRuntime? JsRuntime { get; set; }
-    
-    private DotNetObjectReference<Index>? _objRef;
-    private int _currentNumber;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await SetDotNetHelper();
-        await base.OnAfterRenderAsync(firstRender);
-    }
-
-    private async Task SetDotNetHelper()
-    {
-        _objRef = DotNetObjectReference.Create(this);
-        if (JsRuntime != null) await JsRuntime.InvokeAsync<string>("SetDotNetHelper", _objRef);
-    }
-    
-    [JSInvokable]
-    public void BlazorMethod()
-    {
-        _currentNumber++;
-        StateHasChanged();
-    }
-
-    public void Dispose()
-    {
-        _objRef?.Dispose();
-    }
-
-}
