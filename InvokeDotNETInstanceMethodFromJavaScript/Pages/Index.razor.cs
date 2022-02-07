@@ -12,11 +12,11 @@ public partial class Index: IDisposable
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await SetDotNetHelper();
+        await BundleAndSendDotNetHelper();
         await base.OnAfterRenderAsync(firstRender);
     }
 
-    private async Task SetDotNetHelper()
+    private async Task BundleAndSendDotNetHelper()
     {
         _objRef = DotNetObjectReference.Create(this);
         if (JsRuntime != null) await JsRuntime.InvokeAsync<string>("SetDotNetHelper", _objRef);
