@@ -5,10 +5,10 @@ namespace InvokeDotNETInstanceMethodFromJavaScript.Pages;
 
 public partial class Index: IDisposable
 {
+    //Bundle/set up class instance
     [Inject] private IJSRuntime? JsRuntime { get; set; }
     
     private DotNetObjectReference<Index>? _objRef;
-    private int _currentNumber;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -22,15 +22,18 @@ public partial class Index: IDisposable
         if (JsRuntime != null) await JsRuntime.InvokeAsync<string>("SetDotNetHelper", _objRef);
     }
     
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
+    
+    //Invoke method
+    private int _currentNumber;
+    
     [JSInvokable]
     public void BlazorMethod()
     {
         _currentNumber++;
         StateHasChanged();
-    }
-
-    public void Dispose()
-    {
-        _objRef?.Dispose();
     }
 }
