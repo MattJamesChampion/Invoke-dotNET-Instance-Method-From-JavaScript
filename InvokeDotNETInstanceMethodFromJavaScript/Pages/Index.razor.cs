@@ -19,7 +19,10 @@ public partial class Index: IDisposable
     private async Task BundleAndSendDotNetHelper()
     {
         _objRef = DotNetObjectReference.Create(this);
-        if (JsRuntime != null) await JsRuntime.InvokeAsync<string>("SetDotNetHelper", _objRef);
+        if (JsRuntime != null)
+        {
+            await JsRuntime.InvokeAsync<string>("SetDotNetHelper", _objRef);
+        }
     }
     
     public void Dispose()
